@@ -1,0 +1,25 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.barra {
+    background-color: v.$rosa2;
+    &__contenido{
+        @include m.contenedor;
+        display: flex;
+        flex-direction: column;
+        @include m.desktop {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    &__logo {
+        width: 6rem; 
+        height: 6rem; 
+        background-image: url(../img/Logo.png);
+        background-size: contain;
+
+        @include m.logo;
+        @include m.texto-fluido(2rem, 3rem);
+    }
+}

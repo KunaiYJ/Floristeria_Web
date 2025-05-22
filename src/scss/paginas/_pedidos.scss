@@ -1,0 +1,62 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+// Sección de Bienvenida
+.bienvenida-seccion {
+    @include m.contenedor-sm;
+    background-color: v.$rosa4;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    @include m.shadow;
+
+    &__titulo {
+        @include m.headings;
+        color: v.$rosa1;
+        font-size: 2.4rem;
+    }
+
+    &__descripcion {
+        color: v.$negro;
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    // Proceso de Pedido
+    &__proceso {
+        margin: 2rem 0;
+
+        &-titulo {
+            @include m.headings;
+            color: v.$azulFuerte;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        &-lista {
+            @include m.reset-lista;
+            color: v.$negro;
+            font-size: 1.6rem;
+            text-align: left;
+            margin: 0 auto;
+            max-width: 40rem;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+            list-style-position: inside;
+
+            &-item {
+                margin: 1rem 0;
+                background-color: v.$rosa5;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                font-weight: v.$regular;
+            }
+        }
+    }
+
+    .boton-morado {
+        @include m.boton(v.$morado, inline-block);
+        margin-top: 2rem;
+        font-size: 1.8rem;
+    }
+}

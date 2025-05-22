@@ -1,0 +1,143 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin telefono {
+    @media (min-width: v.$telefono) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+@mixin xl_desktop {
+    @media (min-width: v.$xl_desktop) {
+        @content;
+    }
+}
+
+@mixin boton($bgColor, $disP) {
+    background-color: $bgColor;
+    border-radius: 2rem;
+    padding: 1.5rem 4rem;
+    color: v.$blanco;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+    display: $disP;
+
+    &:hover {
+        background-color: darken( $bgColor, 10% );
+        cursor: pointer;
+    }
+}
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin contenedor {
+    width: min(95%, 140rem);
+    margin: 0 auto;
+}
+
+@mixin contenedor-md {
+    width: min(95%, 90rem);
+    margin: 0 auto;
+}
+
+@mixin contenedor-sm {
+    width: min(95%, 60rem);
+    margin: 0 auto;
+}
+
+@mixin headings {
+    font-family: v.$fuente_principal;
+    font-weight: v.$black;
+    margin: 2rem 0;
+}
+
+@mixin nombre-pagina {
+    @include headings;
+    margin: 6rem 0 3rem 0;
+    text-align: center;
+}
+
+@mixin descripcion-pagina {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: v.$delgada;
+    color: v.$gris;
+    margin-bottom: 5rem;
+}
+
+@mixin texto-fluido($min, $max) {
+    font-size: clamp($min, -0.8rem + 15vw ,$max);
+}
+
+@mixin text-degradado($inicio, $final) {
+    background: linear-gradient(to right, $inicio, $final);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin logo {
+    text-align: center;
+    margin-bottom: 2rem;
+    white-space: nowrap;
+    @include desktop {
+        text-align: left;
+        margin: 0;
+    }
+}
+
+@mixin enlace {
+    all: unset;
+    color: v.$blanco;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: v.$bold;
+
+    &:hover {
+        color: v.$rosa1;
+        cursor: pointer;
+    }
+}
+
+@mixin shadow {
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+@mixin reset-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin tags {
+    @include reset-lista;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    > li {
+        background-color: v.$rosa5;
+        padding: 1rem;
+        border-radius: .5rem;
+        font-size: 1.4rem;
+        color: v.$negro;
+        font-weight: v.$bold;
+    }
+}

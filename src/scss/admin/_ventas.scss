@@ -1,0 +1,388 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.ventas-contenedor {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 2fr 1fr;
+    padding: 2rem;
+    background-color: v.$grisClaro;
+    border-radius: 10px;
+    @include m.shadow;
+    min-width: 50rem;
+    max-width: 230rem;
+    margin: 0 auto;
+
+    @include m.telefono {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    @include m.tablet {
+        grid-template-columns: 1.5fr 1fr;
+    }
+
+    @include m.desktop {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.ventas-buscador input {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    border: 1px solid v.$gris;
+    border-radius: 8px;
+    background-color: v.$blanco;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &:focus {
+        border-color: v.$rosa1;
+        box-shadow: 0 4px 8px rgba(255, 148, 148, 0.2);
+        outline: none;
+    }
+
+    @include m.telefono {
+        font-size: 1.6rem;
+        padding: 1rem;
+    }
+}
+
+.ventas-productos {
+    display: flex; 
+    flex-direction: column; 
+    gap: 2rem; 
+    margin-top: -5rem;
+    @include m.grid(4, 2rem); 
+
+    @include m.telefono {
+        @include m.grid(1, 1rem);
+        margin-top: 0;
+    }
+
+    @include m.tablet {
+        @include m.grid(2, 1.5rem);
+    }
+
+    @include m.desktop {
+        @include m.grid(4, 2rem);
+    }
+
+    .ventas-producto {
+        padding: 5rem;
+        text-align: center;
+        background-color: v.$rosa2;
+        border-radius: 15px;
+        font-size: 1.8rem;
+        font-weight: v.$bold;
+        color: v.$negro;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        producto-imagen {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        div {
+            margin-bottom: 0.5rem;
+        }
+
+        // Estilos para el nombre del producto
+        div:nth-child(2) {
+            font-size: 2rem;
+            font-weight: v.$bold;
+            color: v.$negro;
+            text-transform: uppercase;
+        }
+
+        // Estilos para el stock disponible
+        div:nth-child(3) {
+            font-size: 1.6rem;
+            font-weight: v.$bold;
+            color: v.$negro; // Cambiar a un verde oscuro para destacar stock
+            margin-top: 0.5rem;
+        }
+
+        // Estilos para el precio
+        div:nth-child(4) {
+            font-size: 1.8rem;
+            font-weight: v.$bold;
+            color: v.$verde; // Cambiar a un azul oscuro para destacar precio
+            margin-top: 0.5rem;
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            background-color: darken(v.$rosa2, 5%);
+        }
+
+        @include m.telefono {
+            padding: 2rem;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.ventas-seccion-venta {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    background-color: v.$blanco;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    @include m.telefono {
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .ventas-clientes {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: v.$negro;
+        }
+
+        select {
+            padding: 1rem;
+            font-size: 1.6rem;
+            border: 1px solid v.$gris;
+            border-radius: 8px;
+            background-color: v.$blanco;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: v.$rosa1;
+                outline: none;
+            }
+
+            @include m.telefono {
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    .ventas-detalle-venta {
+        padding: 2rem;                  // 32px
+        background-color: #f9f9f9;         
+        border-radius: 0.3125rem;        // 5px
+        box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); // Sombra sutil
+        max-width: 90rem;                // Aumentado a 1,440px
+        width: 90%;                      // Mantener el 90% del contenedor
+        margin: 2rem auto;              // 32px
+        font-family: Arial, sans-serif;     
+    
+        .ventas-encabezado {
+            display: flex;                  
+            justify-content: space-between; 
+            font-weight: bold;              
+            border-bottom: 0.125rem solid v.$rosa1; // Línea inferior
+            padding-bottom: 1rem;         // 16px
+    
+            span {
+                flex: 1;                    
+                text-align: center;         
+                font-size: 2rem;           // Aumentado a 32px
+            }
+        }
+    
+        .ventas-productos-seleccionados {
+            margin: 1.5rem 0;            // 24px
+            .ventas-producto-row {         
+                display: flex;             
+                justify-content: space-between; 
+                padding: 1rem 0;          // 16px
+                border-bottom: 0.0625rem solid #ccc; // Línea separadora
+
+                .boton-eliminar {
+                    padding: 1.5rem 7rem;
+                    font-size: 1.6rem;
+                    font-weight: v.$bold;
+                    border-radius: 8px;
+                    border: none;
+                    color: v.$blanco;
+                    background-color: v.$rojo;
+                    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+                    cursor: pointer;
+                
+                    &:hover {
+                        background-color: darken(v.$rojo, 10%);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    }
+                
+                    &:active {
+                        background-color: darken(v.$rojo, 15%);
+                        box-shadow: none;
+                    }
+                
+                    @include m.telefono {
+                        padding: 1rem 3rem;
+                    }
+                }
+    
+                span {
+                    flex: 1;                
+                    font-size: 2rem;
+                    text-align: center;
+                }
+                .producto-nombre,
+                .producto-cantidad {
+                    font-weight: bold;
+                    color: v.$negro;
+                }
+                .producto-precio {
+                    color: v.$verde;
+                    font-weight: bold;
+                }
+                .producto-subtotal {
+                    color: v.$rojo;
+                    font-weight: bold;
+                }
+            }
+        }
+    
+        .ventas-total {
+            display: flex;                
+            justify-content: space-between; 
+            font-weight: bold;            
+            margin-top: 1.5rem;          // 24px
+    
+            span {
+                font-size: 2rem;           // Aumentado a 32px
+            }
+    
+            #totalDisplay {
+                color: v.$verde;            
+            }
+        }
+    }
+    
+
+    .ventas-acciones {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+
+        button {
+            padding: 1.5rem 7rem;
+            font-size: 1.6rem;
+            font-weight: v.$bold;
+            border-radius: 8px;
+            border: none;
+            color: v.$blanco;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            @include m.telefono {
+                padding: 1rem 3rem;
+            }
+        }
+
+        .boton-limpiar {
+            background-color: v.$gris;
+            &:hover {
+                background-color: darken(v.$gris, 10%);
+            }
+        }
+
+        .boton-vender {
+            background-color: v.$verde;
+            &:hover {
+                background-color: darken(v.$verde, 10%);
+            }
+        }
+    }
+}
+
+.producto-imagen {
+    width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+
+    @include m.telefono {
+        width: 100%;
+    }
+}
+
+.ventas-categorias {
+    display: flex;
+    flex-direction: column;
+    background-color: v.$blanco;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+
+    @include m.telefono {
+        padding: 1.5rem;
+    }
+
+    h3 {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        color: v.$negro;
+
+        @include m.telefono {
+            font-size: 2rem;
+        }
+    }
+
+    .ventas-categoria {
+        width: auto;
+        padding: 1rem 1rem;
+        font-size: 1.6rem;
+        font-weight: v.$bold;
+        border: 1px solid v.$gris;
+        border-radius: 8px;
+        background-color: v.$rosa3;
+        color: v.$negro;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 1rem;
+
+        &:hover {
+            background-color: v.$rosa1;
+            transform: translateY(-3px);
+        }
+
+        @include m.telefono {
+            font-size: 1.4rem;
+            padding: 0.5rem;
+        }
+    }
+}
+
+.swal2-popup.mi-alerta-personalizada {
+    width: 600px;
+    padding: 30px;
+    font-size: 1.5rem;
+}
+
+.swal2-popup.mi-alerta-personalizada .swal2-title {
+    font-size: 2rem;
+}
+
+.swal2-popup.mi-alerta-personalizada .swal2-content {
+    font-size: 2rem;
+}
+
+
+

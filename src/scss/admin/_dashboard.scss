@@ -1,0 +1,282 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.buscador {
+    display: flex;
+    justify-content: start;
+    margin: 2rem 0;
+
+    input[type="text"] {
+        padding: 1rem 2rem;
+        font-family: v.$fuente_principal;
+        font-size: 1.6rem;
+        color: v.$negro;
+        border: 2px solid v.$gris;
+        border-radius: 2rem;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+        &:focus {
+            border-color: v.$rosa1;
+            box-shadow: 0 0 10px rgba(252, 166, 252, 0.5);
+        }
+
+        @include m.tablet {
+            font-size: 1.8rem;
+        }
+
+        @include m.desktop {
+            width: 40%;
+        }
+
+        @include m.xl_desktop {
+            width: 30%;
+        }
+    }
+}
+
+.dashboard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$rosa4;
+
+    &__header {
+        background-color: v.$rosa2;
+        padding: 2rem;
+    }
+
+    &__header-grid {
+        display: flex;
+        flex-direction: column;
+
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__logo {
+        width: 6rem; 
+        height: 6rem; 
+        background-image: url(../img/Logo.png);
+        background-size: contain;
+
+        @include m.logo;
+        @include m.texto-fluido(2rem, 3rem);
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__submit--logout {
+        @include m.enlace;
+    }
+
+    &__grid {
+        display: flex;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    &__sidebar {
+        background-color: v.$rosa4;
+        width: 15rem;
+    }
+
+    &__menu {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__enlace {
+        color: v.$rosa1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        transition: 300ms background-color ease-in-out, 300ms color ease, 300ms border-radius ease;
+        border-radius: 2rem;
+
+        &:hover,
+        &--actual {
+            background-color: v.$rosa3;
+        }
+    }
+
+    &__icono {
+        font-size: 2rem;
+    }
+
+    &__menu-texto {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: v.$bold;
+        margin-top: .5rem;
+    }
+
+    &__contenido {
+        padding: 1rem 1rem 3rem 1rem;
+        width: 100%;
+        overflow-y: scroll;
+
+        @include m.tablet {
+            padding: 1rem 5rem 3rem 5rem;
+        }
+    }
+
+    &__contenedor-boton {
+        display: flex;
+        justify-content: flex-end; 
+        gap: 1rem;
+
+        @include m.tablet {
+            display: flex;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__boton {
+        @include m.boton(v.$azulFuerte, v.$blanco);
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        @include m.tablet {
+            width: auto;
+        }
+    }
+
+    &__boton--izquierdo {
+        background-color: v.$morado;
+        color: v.$blanco;
+    }
+
+    &__contenedor {
+        @include m.shadow;
+        background-color: v.$blanco;
+        padding: 2rem;
+        border-radius: 2rem;
+        margin-top: 2rem;
+    }
+
+    &__formulario {
+        @extend .dashboard__contenedor;
+        @include m.contenedor-md;
+    }
+
+    /** Indicadores de Clientes, Productos, Proveedores, Ventas y Pedidos */
+    &__indicadores {
+        display: grid;
+        gap: 2rem;
+        margin-top: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    
+        @include m.tablet {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }  
+
+    .indicador {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+
+        i {
+            margin-top: 3rem;
+            font-size: 25rem;
+            color: v.$morado;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 36px;
+            font-weight: bold;
+            color: v.$verde;
+        }
+
+        &:hover {
+            background-color: #f9f9f9;
+        }
+    }
+
+    .calendario-contenedor {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+    
+        .calendario {
+            flex: 3;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+    
+        .tabla-pedido {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+    
+            h3 {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+    
+            table {
+                width: 100%;
+                border-collapse: collapse;
+    
+                th, td {
+                    padding: 8px;
+                    border-bottom: 1px solid #ccc;
+                    text-align: left;
+                }
+    
+                th {
+                    background-color: v.$rosa1;
+                    color: white;
+                }
+    
+                tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+    
+                tr:hover {
+                    background-color: #f1f1f1;
+                }
+            }
+        }
+
+        .btn-editar{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: v.$azulFuerte;
+        }
+
+        .btn-eliminar {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: v.$rojo;
+        }
+    } 
+}

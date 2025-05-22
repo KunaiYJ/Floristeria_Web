@@ -1,0 +1,94 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+/* Modal específico para pedidos */
+.modal-pedido {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto; 
+
+    &-content {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+
+        @include m.telefono {
+            padding: 20px;
+        }
+        @include m.tablet {
+            padding: 30px;
+        }
+    }
+}
+
+/* Botón de cierre en la esquina superior */
+.close-pedido {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    transition: 0.3s;
+
+    &:hover,
+    &:focus {
+        color: black;
+        cursor: pointer;
+    }
+}
+
+/* Títulos y párrafos dentro del modal */
+.modal-pedido-content h2 {
+    font-size: 2.4rem;
+    text-align: center;
+    color: v.$rosa1;
+    @include m.texto-fluido(2rem, 2.5rem);
+}
+
+.modal-pedido-content p {
+    margin: 1.5rem 0;
+    font-size: 1.6rem;
+    color: v.$negro;
+}
+
+/* Formulario de actualización de estado */
+.modal-pedido-content form {
+    margin-top: 2rem;
+
+    select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 1.5rem;
+        border: 1px solid #ccc;
+        font-size: 1.6rem;
+    }
+
+    button {
+        @include m.boton(v.$verde, block);
+        margin-top: 1rem;
+        text-align: center;
+    }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .modal-pedido-content {
+        width: 95%;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,14 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.boton-rosa {
+    @include m.boton(v.$rosa1, block);
+}
+
+.boton-verde {
+    @include m.boton(v.$verde, inline-block)
+}
+
+.boton-morado {
+    @include m.boton(v.$morado, inline-block);
+}

@@ -1,0 +1,61 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.header {
+    min-height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)),
+                image-set( url(../img/header.avif) 1x, url(../img/header.webp) 1x, url(../img/header.jpg) 1x );
+    background-size: cover;
+    background-position: center;
+
+    &__contenedor {
+        @include m.contenedor;
+    }
+    &__navegacion {
+        padding: 5rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+
+        @include m.tablet {
+            justify-content: flex-end;
+        }
+    }
+    &__enlace {
+        @include m.enlace;
+    }
+    &__contenido {
+        padding-top: 10rem;
+        @include m.tablet {
+            padding-top: 5rem;
+        }
+    }
+    &__logo {
+        @include m.texto-fluido(1rem, 10rem);
+        @include m.text-degradado(v.$rosa1, v.$rosa4);
+        text-align: center;
+        @include m.tablet {
+            text-align: left;
+            display: inline-block;
+        }
+    }
+    &__texto {
+        font-size: 3rem;
+        font-weight: v.$bold;
+        color: v.$amarillo;
+        margin: 2rem 0;
+        text-align: center;
+
+        @include m.tablet {
+            text-align: center;
+        }
+
+        &--secundario {
+            font-size: 2rem;
+        }
+    }
+}

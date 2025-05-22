@@ -1,0 +1,26 @@
+// Si tienes un archivo específico para el calendario
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+/* Estilos para los eventos del calendario según su estado */
+.fc-event {
+    &.pendiente {
+        background-color: #f39c12 !important;
+        border-color: #f39c12 !important;
+    }
+
+    &.pagado {
+        background-color: #00a65a !important;
+        border-color: #00a65a !important;
+    }
+
+    &.terminado {
+        background-color: #d9534f !important;
+        border-color: #d9534f !important;
+    }
+
+    &.pedido-usuario { /* Estilo para pedidos de usuarios */
+        background-color: #cb6ff5 !important; /* Color personalizado */
+        border-color: #cb6ff5 !important; /* Color del borde */
+    }
+}

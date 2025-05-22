@@ -1,0 +1,84 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+
+    &__fieldset {
+        border: none;
+        margin-top: 1rem;
+        padding: 0;
+    }
+    &__legend {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        font-weight: v.$bold
+    }
+    &__campo {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    &__label {
+        display: block;
+        font-size: 1.8rem;
+    }
+    &__input {
+        padding: 1rem;
+        border: 1px solid darken(v.$gris, 20);
+        border-radius: 1rem;
+
+        &--file {
+            border: none;
+        }
+    }
+    &__submit {
+        @include m.boton(v.$azulFuerte, v.$blanco);
+
+        &--registrar {
+            width: 100%;
+        }
+    }
+    &__select {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 2rem;
+        background-color: #fff;
+        color: #333;
+        appearance: none;
+    }
+
+    &__grupo-campos {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem; /* Espacio entre los inputs */
+    }
+
+    &__campo {
+        flex: 1; /* Esto asegura que los campos se distribuyan de manera uniforme */
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    &__texto {
+        margin-top: 3rem;
+    }
+
+    &__imagen {
+        max-width: 40rem;
+    }
+
+    &__listado {
+        @include m.tags;
+    }
+}
+
+.mensaje {
+    color: v.$rojo;
+}
